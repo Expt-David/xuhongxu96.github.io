@@ -7,6 +7,7 @@ tags:
 - computer science
 - loongson
 - CPU
+- news
 description: '胡伟武 - 2016年是红军长征胜利80周年，2016年研制成功的龙芯3A3000处理器即以CZ80命名，每颗芯片的硅片上都刻有CZ80字样。'
 categories:
 - News
