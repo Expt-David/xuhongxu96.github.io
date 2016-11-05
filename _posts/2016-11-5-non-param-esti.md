@@ -75,11 +75,11 @@ plot(x, p);
 
 #### 结果
 
-** 正态核函数 **
+**正态核函数**
 
 ![f1](/assets/img/pr-non-param/f1.png)
 
-** 方核函数 **
+**方核函数**
 
 ![f2](/assets/img/pr-non-param/f2.png)
 
