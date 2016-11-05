@@ -48,7 +48,7 @@ function [p] = parzen(data, range, h, f)
 #### 结果
 
 $$
-p(x) = \frac{1}{Nh^D} \sum_{n=1}^N K\big(\frac{x - x_i}{h})
+p(x) = \frac{1}{Nh^D} \sum_{n=1}^N K\big(\frac{x - x_i}{h}\big)
 $$
 
 ### 示例
@@ -130,7 +130,7 @@ $$
 其中
 
 $$R_k^D(x)$$是待估点与$$K_n$$近邻点的距离   
-$$ c_D = \frac{2 {\pi}^{\frac{D}{2}}}{D\cdot\Gamma\big(\frac{D}{2})} $$
+$$ c_D = \frac{2 {\pi}^{\frac{D}{2}}}{D\cdot\Gamma\big(\frac{D}{2}\big)} $$
 
 即
 
