@@ -130,7 +130,7 @@ $$
 其中
 
 $$R_k^D(x)$$是待估点与$$K_n$$近邻点的距离   
-$$c_D = \frac{2\pi^{\frac{D}{2}}}{D\cdot\Gamma\big(\frac{D}{2}\)$$
+$$ c_D = \frac{2 {\pi}^{\frac{D}{2}}}{D\cdot\Gamma\big(\frac{D}{2}\)} $$
 
 即
 
