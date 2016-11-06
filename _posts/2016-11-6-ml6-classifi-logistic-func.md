@@ -19,7 +19,7 @@ published: true
 
 前面几节都是在介绍回归问题，用于实现连续数据的机器学习。现在，进入分类问题，来处理离散的数据。
 
-首先，不要因为“逻辑回归”这个名字所迷惑，它是用于解决分类问题的，而不是回归问题，尽管有几分相似。
+首先，不要被“逻辑回归”这个名字所迷惑，它是用于解决分类问题的，而不是回归问题，尽管有几分相似。
 
 ## 二元分类
 
@@ -49,13 +49,13 @@ $$
 
 **逻辑函数图像**
 
-![Sigmoid]()
+![Sigmoid](/assets/img/classifi-logistic-func/sigmoid.png)
 
 借助逻辑函数，我们可以把任意实数映射到(0, 1)的区间中，便于分类。
 
 为了更好的理解逻辑函数，这里有个网站可以互动修改参数来预览函数图像：
 
-[互动Sigmoid函数]((/assets/img/classifi-logistic-regre/sigmoid.png))https://www.desmos.com/calculator/bgontvxotm)
+[互动Sigmoid函数](https://www.desmos.com/calculator/bgontvxotm)
 
 #### 含义
 
@@ -138,11 +138,11 @@ $$
 
 **y = 1时**
 
-![y1]((/assets/img/classifi-logistic-func/y1.png))
+![y1](/assets/img/classifi-logistic-func/y1.png)
 
 **y = 0时**
 
-![y0]((/assets/img/classifi-logistic-func/y0.png))
+![y0](/assets/img/classifi-logistic-func/y0.png)
 
 #### Octave/MATLAB代码
 
