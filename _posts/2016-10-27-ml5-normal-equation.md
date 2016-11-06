@@ -1,17 +1,17 @@
 ---
 layout: post
-title:  "机器学习（五）正规方程、多项式回归"
-image: ''
-date:   2016-10-27 18:46:00
+title: 机器学习（五）正规方程、多项式回归
+date: {}
 tags:
-- computer science
-- machine learning
-- polynomial regression
-- normal equation
-description: '机器学习Coursera学习笔记：第五部分 正规方程、多项式回归'
+  - computer science
+  - machine learning
+  - polynomial regression
+  - normal equation
+description: 机器学习Coursera学习笔记：第五部分 正规方程、多项式回归
 categories:
-- Machine Learning
-twitter_text: '机器学习Coursera学习笔记：第五部分 正规方程、多项式回归'
+  - Machine Learning
+twitter_text: 机器学习Coursera学习笔记：第五部分 正规方程、多项式回归
+published: true
 ---
 
 ## 正规方程
@@ -84,7 +84,7 @@ $$
  > - 使用了两种近似的特征（比如房间大小和房间长度、宽度）
  > - 使用了过多特征。此时应减少特征数量，或采用一种后面会介绍的技术“正规化”。
  
-### Octave/Matlab 代码实现
+### Octave/MATLAB 代码实现
 
 ```matlab
 function [theta] = normalEqn(X, y)
