@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 机器学习（三）梯度下降算法
-date: {}
+date: 2016-10-22T00:33:00.000Z
 tags:
   - computer science
   - machine learning
