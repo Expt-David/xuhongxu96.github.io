@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "机器学习（二）线性回归"
-image: ''
-date:   2016-10-16 13:13:00
+title: 机器学习（二）线性回归
+date: {}
 tags:
-- computer science
-- machine learning
-- regression
-description: '机器学习Coursera学习笔记：第二部分 线性回归'
+  - computer science
+  - machine learning
+  - regression
+description: 机器学习Coursera学习笔记：第二部分 线性回归
 categories:
-- Machine Learning
-twitter_text: '机器学习Coursera学习笔记：第二部分 线性回归'
+  - Machine Learning
+twitter_text: 机器学习Coursera学习笔记：第二部分 线性回归
+published: true
 ---
 ## 简述
 线性回归，顾名思义，是用一条直线来拟合数据的分布情况。当然啦，前面说过回归方法用于解决连续性的问题，直线所拟合的也必然是一个连续函数。
@@ -80,7 +80,7 @@ $$ J(\theta) = \dfrac {1}{2m} (X\theta - \vec{y})^{T} (X\theta - \vec{y}) $$
 
 其中$$\vec{y}$$是由所有的y值组成的向量。
 
-## Octave/Matlab 代码实现
+## Octave/MATLAB 代码实现
 
 ```matlab
 function J = computeCost(X, y, theta)
