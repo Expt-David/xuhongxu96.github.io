@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "机器学习（三）梯度下降算法"
-image: ''
-date:   2016-10-22 00:33:00
+title: 机器学习（三）梯度下降算法
+date: {}
 tags:
-- computer science
-- machine learning
-- gradient descent
-description: '机器学习Coursera学习笔记：第三部分 梯度下降算法'
+  - computer science
+  - machine learning
+  - gradient descent
+description: 机器学习Coursera学习笔记：第三部分 梯度下降算法
 categories:
-- Machine Learning
-twitter_text: '机器学习Coursera学习笔记：第三部分 梯度下降算法'
+  - Machine Learning
+twitter_text: 机器学习Coursera学习笔记：第三部分 梯度下降算法
+published: true
 ---
 
 ## 简述
@@ -61,7 +61,7 @@ $$
 \theta := \theta - \frac{\alpha}{m} X^{T} (X\theta - \vec{y})
 $$
 
-## Octave/Matlab 代码实现
+## Octave/MATLAB 代码实现
 
 ```matlab
 function [theta] = gradientDescent(X, y, theta, alpha, num_iters)
