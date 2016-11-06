@@ -66,8 +66,10 @@ $$
 这个分类函数的值，实际上是给出了分类输出为1的概率。函数值为0.7，也就是说有70%的可能性，分类为1。
 
 $$
-h_{\theta}(x) = P(y=1|x;\theta) = 1 - P(y=0|x;\theta) \newline
-P(y=0|x;\theta) + P(y=1|x;\theta) = 1
+\begin{align*}
+& h_{\theta}(x) = P(y=1|x;\theta) = 1 - P(y=0|x;\theta) \newline
+& P(y=0|x;\theta) + P(y=1|x;\theta) = 1
+\end{align*}
 $$
 
 分类为0的可能性与分类为1的可能性互补（和为1）。
