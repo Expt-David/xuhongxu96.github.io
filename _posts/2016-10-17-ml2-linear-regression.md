@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 机器学习（二）线性回归
-date: {}
+date: 2016-10-16T13:13:00.000Z
 tags:
   - computer science
   - machine learning
