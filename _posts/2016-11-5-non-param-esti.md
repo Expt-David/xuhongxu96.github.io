@@ -1,21 +1,21 @@
 ---
 layout: post
-title:  "模式识别（一）非参数估计：Parzen窗估计和Kn近邻估计"
-image: ''
-date:   2016-11-5 15:40:00
+title: 模式识别（一）非参数估计：Parzen窗估计和Kn近邻估计
+date: {}
 tags:
-- computer science
-- pattern recognition
-- parzen windows
-- knn
-description: '北师大模式识别课程实验一：Parzen窗估计和Kn近邻估计'
+  - computer science
+  - pattern recognition
+  - parzen windows
+  - knn
+description: 北师大模式识别课程实验一：Parzen窗估计和Kn近邻估计
 categories:
-- Pattern Recognition
-twitter_text: '北师大模式识别课程实验一：Parzen窗估计和Kn近邻估计'
+  - Pattern Recognition
+twitter_text: 北师大模式识别课程实验一：Parzen窗估计和Kn近邻估计
+published: true
 ---
 ## Parzen窗估计
 
-### 代码
+### Octave/MATLAB代码
 
 ``` matlab
 function [p] = parzen(data, range, h, f)
@@ -53,7 +53,7 @@ $$
 
 ### 示例
 
-#### 代码
+#### Octave/MATLAB代码
 
 ``` matlab
 S = 1000;
@@ -85,7 +85,7 @@ plot(x, p);
 
 ## Kn近邻估计
 
-### 代码
+### Octave/MATLAB代码
 
 ``` matlab
 function [p] = knn(data, range, kn)
@@ -148,7 +148,7 @@ $$
 
 ### 示例
 
-#### 代码
+#### Octave/MATLAB代码
 
 ``` matlab
 S = 5000;
