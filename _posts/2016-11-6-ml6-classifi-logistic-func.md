@@ -42,9 +42,11 @@ $$
 为便于表示和计算，采用Sigmoid函数（S型函数），也叫逻辑函数：
 
 $$
-h_{\theta}(x) = g({\theta}^T x) \newline
-z = {\theta}^T x \newline
-g(z) = \frac{1}{1 + e^{-z}}
+\begin{align*}
+& h_{\theta}(x) = g({\theta}^T x) \newline
+& z = {\theta}^T x \newline
+& g(z) = \frac{1}{1 + e^{-z}}
+\end{align*}
 $$
 
 **逻辑函数图像**
@@ -98,8 +100,10 @@ $$
 将逻辑函数代入，可得：
 
 $$
-h_{\theta}(x) = g(z) \geq 0.5 \newline
-当 z \geq 0
+\begin{align*}
+& h_{\theta}(x) = g(z) \geq 0.5 \newline
+& 当 z \geq 0
+\end{align*}
 $$
 
 其中
@@ -111,8 +115,10 @@ $$
 所以
 
 $$
-{\theta}^Tx \geq 0 \Rightarrow y = 1 \newline
-{\theta}^Tx < 0 \Rightarrow y = 0
+\begin{align*}
+{\theta}^Tx \geq 0 &\Rightarrow y = 1 \newline
+{\theta}^Tx < 0 &\Rightarrow y = 0
+\end{align*}
 $$
 
 可见，决策边界即分隔$$y = 0$$和$$y = 1$$的直线。
