@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 机器学习（六）分类问题和逻辑函数
-date: 2016-10-27T18:46:00.000Z
+date: 2016-11-6T17:03:00.000Z
 tags:
   - computer science
   - machine learning
