@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 机器学习（五）正规方程、多项式回归
-date: {}
+date: 2016-10-27T18:46:00.000Z
 tags:
   - computer science
   - machine learning
