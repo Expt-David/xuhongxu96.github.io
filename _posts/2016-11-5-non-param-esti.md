@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 模式识别（一）非参数估计：Parzen窗估计和Kn近邻估计
-date: {}
+date: 2016-11-05T15:40:00.000Z
 tags:
   - computer science
   - pattern recognition
