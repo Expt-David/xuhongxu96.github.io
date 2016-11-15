@@ -28,7 +28,7 @@ title: 机器学习（八）多类分类问题和正规化
 假设我们有n+1个分类（从0到n），那么我们可以将其划分成n+1个二元分类问题：
 
 $$
-\begin{align*}& y \in \lbrace0, 1 ... n\rbrace \newline& h_\theta^{(0)}(x) = P(y = 0 | x ; \theta) \newline& h_\theta^{(1)}(x) = P(y = 1 | x ; \theta) \newline& \cdots \newline& h_\theta^{(n)}(x) = P(y = n | x ; \theta) \newline& \mathrm{prediction} = \max_i( h_\theta ^{(i)}(x) )\newline\end{align*}
+\begin{align*}& y \in \lbrace0, 1 ... n\rbrace \newline& h_\theta^{(0)}(x) = P(y = 0 | x ; \theta) \newline& h_\theta^{(1)}(x) = P(y = 1 | x ; \theta) \newline& \cdots \newline& h_\theta^{(n)}(x) = P(y = n | x ; \theta) \newline& \mathrm{估值} = \max_i( h_\theta ^{(i)}(x) )\newline\end{align*}
 $$
 
 这相当于我们对每一种分类结果的可能性进行估计，最终选择最有可能的分类。这样就可以应用之前二元分类的方法，轻松解决多类分类问题。
