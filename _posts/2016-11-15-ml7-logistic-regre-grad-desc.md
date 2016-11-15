@@ -7,7 +7,7 @@ tags:
   - computer science
   - machine learning
   - classification
-  - logistic regression
+  - regression
   - gradient descent
 description: 机器学习Coursera学习笔记：第七部分 分类问题与梯度下降
 categories:
