@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 date: 2016-11-15T20:35:00.000Z
 tags:
@@ -11,6 +11,7 @@ description: 机器学习Coursera学习笔记：第八部分 多类分类问题�
 categories:
   - Machine Learning
 twitter_text: 机器学习Coursera学习笔记：第八部分 多类分类问题和正规化
+title: 多类分类问题和正规化
 ---
 ## 多类分类问题
 
