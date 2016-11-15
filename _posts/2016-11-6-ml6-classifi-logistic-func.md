@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 机器学习（六）分类问题和逻辑函数
-date: 2016-11-6T17:03:00.000Z
+date: {}
 tags:
   - computer science
   - machine learning
@@ -153,6 +153,8 @@ $$
 ![y0](/assets/img/classifi-logistic-func/y0.png)
 
 #### Octave/MATLAB代码
+
+代码中涉及下一节中简化的代价函数和梯度计算。
 
 ``` matlab
 function [J, grad] = costFunction(theta, X, y)
