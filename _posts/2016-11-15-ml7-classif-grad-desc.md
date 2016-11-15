@@ -1,12 +1,13 @@
 ---
 published: true
 layout: post
-title: 机器学习（七）分类问题与梯度下降
+title: 机器学习（七）逻辑回归与梯度下降
 date: 2016-11-15T19:35:00.000Z
 tags:
   - computer science
   - machine learning
   - classification
+  - logistic regression
   - gradient descent
 description: 机器学习Coursera学习笔记：第七部分 分类问题与梯度下降
 categories:
@@ -55,7 +56,9 @@ $$
 \end{align*}
 $$
 
-## 梯度下降
+## 逻辑回归与梯度下降
+
+现在，我们就要使用梯度下降法实现逻辑回归。大家不要被“回归”二字迷惑，这里仍然是解决分类问题，而不是回归问题。但其中有一些相似。
 
 ### 一般形式
 
@@ -105,4 +108,3 @@ $$
 $$
 \nabla J(\theta) = \frac{1}{m} \cdot  X^T \cdot \left(g\left(X\cdot\theta\right) - \vec{y}\right)
 $$
-
