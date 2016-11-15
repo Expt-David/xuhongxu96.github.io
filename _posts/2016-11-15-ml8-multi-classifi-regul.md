@@ -113,7 +113,7 @@ $$
 \begin{align*}& \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline& \text{其中}\ \ L = \begin{bmatrix} 0 & & & & \newline & 1 & & & \newline & & 1 & & \newline & & & \ddots & \newline & & & & 1 \newline\end{bmatrix}\end{align*}
 $$
 
-我们在括号中加一项以正规参数为系数的矩阵。这个矩阵除了第一个元素为0外，正对角线全为1。这样就可以实现对$$\theta_0$$意外的参数$$\theta_j$$的值的抑制。
+我们在括号中加一项以正规参数为系数的矩阵。这个矩阵除了第一个元素为0外，正对角线全为1。这样就可以实现对$$\theta_0$$以外的参数$$\theta_j$$的值的抑制。
 
 ### 正规化逻辑回归
 
