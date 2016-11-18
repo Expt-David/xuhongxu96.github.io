@@ -152,7 +152,7 @@ $$
 
 ``` matlab
 S = 5000;
-xi = [randn(1, S) * 0.43 + 1.5, rand(1, S) + 3];
+xi = [sqrt(rand(1, S)) + 0.5, -sqrt(rand(1, S)) + 2.5, rand(1, 2 * S) + 3];
 x = linspace(0, 5, 100);
 p = knn(xi, x, sqrt(S) * 20);
 figure();
