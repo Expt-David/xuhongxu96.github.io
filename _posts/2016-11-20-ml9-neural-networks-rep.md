@@ -132,7 +132,7 @@ $$
 \begin{align*}x = \begin{bmatrix}x_0 \newline x_1 \newline\cdots \newline x_n\end{bmatrix} &z^{(j)} = \begin{bmatrix}z_1^{(j)} \newline z_2^{(j)} \newline\cdots \newline z_n^{(j)}\end{bmatrix}\end{align*}
 $$
 
-令$$x = a^{(1)}$$，则：
+令$$a^{(1)}=x$$，则：
 
 $$
 z^{(j)} = \Theta^{(j-1)}a^{(j-1)}
@@ -146,7 +146,7 @@ $$
 z^{(j)} = \Theta^{(j-1)}a^{(j-1)}
 $$
 
-其中$$\Theta^{(j-1)}$$维度为$$s_j * (n + 1)$$（$$s_j$$为第j层节点数），$$a^{(j-1)}$$是高为$$(n+1)$$的列向量。他们相乘得到一个高为$$s_j$$的列向量。
+其中$$\Theta^{(j-1)}$$维度为$$s_j * (n + 1)$$（$$s_j$$为第$$j$$层节点数），$$a^{(j-1)}$$是高为$$(n+1)$$的列向量。他们相乘得到一个高为$$s_j$$的列向量，即$$z^{(j)}$$。
 
 然后，我们可以通过激活函数（这里用S型函数）得到激活值：
 
@@ -154,13 +154,14 @@ $$
 a^{(j)} = g(z^{(j)})
 $$
 
-激活函数对向量$$z^{(j)}$$中每一个元素进行计算。
+ > 注意，激活函数将对向量$$z^{(j)}$$中每一个元素进行计算。即：
+ > $$ a_i^{(j)} = g(z_i^{(j)}) $$
 
-为了计算下一层节点的激活值，为当前层增加一个等于1的偏移量$$a_0^{(j)}$$。
+为了计算下一层节点的激活值，为当前层增加一个偏移量$$a_0^{(j)}=1$$。
 
 重复上述过程，直到计算最后的输出层。
 
-首先还是计算输出层前一层的输出值：
+计算输出层前，还是一样地计算输出层前一层的输出值：
 
 $$
 z^{(j+1)} = \Theta^{(j)}a^{(j)}
@@ -172,7 +173,7 @@ $$
 h_\Theta(x) = a^{(j+1)} = g(z^{(j+1)})
 $$
 
-计算过程就是这样的。也可以通用于多于3层的神经网络。
+计算过程就是这样的，可以通用于多于3层的神经网络。
 
 ### 示例
 
@@ -184,11 +185,11 @@ $$
 \begin{align*}AND:\newline\Theta^{(1)} &=\begin{bmatrix}-30 & 20 & 20\end{bmatrix} \newline NOR:\newline\Theta^{(1)} &= \begin{bmatrix}10 & -20 & -20\end{bmatrix} \newline OR:\newline\Theta^{(1)} &= \begin{bmatrix}-10 & 20 & 20\end{bmatrix} \newline\end{align*}
 $$
 
-其中$$\Theta^{(1)}$$为对应的隐层权值矩阵。
+其中$$\Theta^{(1)}$$为对应的权值矩阵。读者可以自行按照神经网络计算方法绘制逻辑真值表，看一看是不是对应的逻辑运算。
 
-#### 多类分类
+#### 多类分类问题
 
-上面举得例子中，输出层都只有一个节点，也就是最终的预测值$$ h_{\theta} $$。如果要对多类分类，可以让预测值用向量表示。此时神经网络就是这个样子的：
+上面举的例子中，输出层都只有一个节点，也就是最终的预测值$$ h_{\theta} $$。如果要对多类分类，可以让预测值用向量表示。此时神经网络就是这个样子的：
 
 $$
 \begin{align*}\begin{bmatrix}x_0 \newline x_1 \newline x_2 \newline\cdots \newline x_n\end{bmatrix} \rightarrow\begin{bmatrix}a_0^{(2)} \newline a_1^{(2)} \newline a_2^{(2)} \newline\cdots\end{bmatrix} \rightarrow\begin{bmatrix}a_0^{(3)} \newline a_1^{(3)} \newline a_2^{(3)} \newline\cdots\end{bmatrix} \rightarrow \cdots \rightarrow\begin{bmatrix}h_\Theta(x)_1 \newline h_\Theta(x)_2 \newline h_\Theta(x)_3 \newline h_\Theta(x)_4 \newline\end{bmatrix} \rightarrow\end{align*}
@@ -200,4 +201,4 @@ $$
 h_\Theta(x) =\begin{bmatrix}0 \newline 0 \newline 1 \newline 0 \newline\end{bmatrix}
 $$
 
-我们可以对不同的向量表示映射不同的类别，从而做出多类分类预测。
+我们可以对不同的向量表示不同的类别，从而做出多类分类预测。
