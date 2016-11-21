@@ -212,34 +212,19 @@ $$
  - 输出层误差
 
 $$
-\begin{split}
-\delta^{(L)}_i 
-=& \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \newline
-=& \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) \newline
-=& a_i^{(L)} - y_i
-\end{split}
+\delta^{(L)}_i = a_i^{(L)} - y_i
 $$
 
  - 隐层误差（反向传播计算）
 
 $$
-\begin{split}
-\delta^{(L)}_i 
-=& \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \newline
-=& \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) \newline
-=& a_i^{(L)} - y_i
-\end{split}
+\delta^{(l)}_i = \sum_{k=1}^{s_{l+1}} \Big[\delta^{(l+1)}_k \Theta_{k,i}^{(l+1)} \Big] a_i^{(l)} (1 - a_i^{(l)})
 $$
 
  - 代价函数偏导计算（通用）
 
 $$
-\begin{split}
-\dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta) 
-=& \dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} \dfrac{\partial a_i^{(l)}}{\partial z_i^{(l)}} \dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}} \newline
-=& \delta^{(l)}_i \dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}} \newline
-=& \delta^{(l)}_i a_j^{(l-1)} 
-\end{split}
+\dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta) = \delta^{(l)}_i a_j^{(l-1)} 
 $$
 
 ### 算法过程
