@@ -61,7 +61,7 @@ $$
 
 ### 思路
 
-类似梯度下降法，给定一个初值后，不断根据代价函数的变化调整参数值（权值），最终不断逼近最优结果（代价函数值最小）。
+类似梯度下降法，给定一个初值后，计算出所有节点的计算值和激活值，然后根据代价函数的变化不断调整参数值（权值），最终不断逼近最优结果，使代价函数值最小。
 
 ### 推导
 
@@ -73,7 +73,7 @@ $$
 
 这个偏导并不好求，为了方便推导，我们假设只有一个样本（$$m=1$$，可忽略代价函数中的外部求和），并舍弃正规化部分，然后分为两种情况来求。
 
-#### 隐层$$\rightarrow$$输出层
+#### 情况1 隐层$$\rightarrow$$输出层
 
 我们知道：
 
@@ -106,7 +106,7 @@ $$
 $$
 
 $$
-\dfrac{\partial z_i^{(L)})}{\partial \Theta_{i,j}^{(L)}} = \dfrac{\partial ( \Sigma_{k=0}^{K} \Theta_{i,k}^{(L)} a_k^{(L-1)})}{\partial  \Theta_{i,j}^{(L)}} = a_j^{(L-1)} 
+\dfrac{\partial z_i^{(L)})}{\partial \Theta_{i,j}^{(L)}} = \dfrac{\partial ( \sum_{k=0}^{K} \Theta_{i,k}^{(L)} a_k^{(L-1)})}{\partial  \Theta_{i,j}^{(L)}} = a_j^{(L-1)} 
 $$
 
 综上：
@@ -117,3 +117,38 @@ $$
 = \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) a_j^{(L-1)} = (a_i^{(L)} - y_i)a_j^{(L-1)}
 $$
 
+#### 情况2 隐层/输入层$$\rightarrow$$隐层
+
+因为$$ a^{(1)}=x $$，所以可以将输入层和隐层同样对待。
+
+$$
+\dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta)
+=\dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} \dfrac{\partial a_i^{(l)}}{\partial z_i^{(l)}} \dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}}\ (l = 1, 2, ..., L-1)
+$$
+
+其中后两部分偏导很容易根据前面所得类推出来：
+
+$$
+\dfrac{\partial a_i^{(l)}}{\partial z_i^{(l)}} = \dfrac{e^{z_i^{(l)}}}{(e^{z_i^{(l)}}+1)^2} = a_i^{(l)} (1 - a_i^{(l)})
+$$
+
+$$
+\dfrac{\partial z_i^{(l)})}{\partial \Theta_{i,j}^{(l)}} = a_j^{(l-1)} 
+$$
+
+第一部分偏导是不好求解的，或者说是没法直接求解的，我们可以得到一个递推式：
+
+$$
+\dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} = 
+\sum_{k=1}^{s_l} \dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \dfrac{\partial z_k^{(l+1)}}{\partial a_k^{(l)}}
+$$
+
+递推式中第一部分是递推项，后两部分同样易求：
+
+$$
+\dfrac{\partial a_k^{(l+1)}}{\partial z_{k}^{(l+1)}} = \dfrac{e^{z_{k}^{(l+1)}}}{(e^{z_{k}^{(l+1)}}+1)^2} = a_k^{(l+1)} (1 - a_k^{(l+1)})
+$$
+
+$$
+\dfrac{\partial z_k^{(l+1)}}{\partial a_k^{(l)}} = \dfrac{\partial ( \sum_{j=0}^{s_{l+1}} \Theta_{i,j}^{(l+1)} a_j^{(l)})}{\partial a_k^{(l)}} = \Theta_{i,k}^{(l+1)}
+$$
