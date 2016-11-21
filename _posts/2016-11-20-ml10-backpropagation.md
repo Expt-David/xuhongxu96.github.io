@@ -112,9 +112,12 @@ $$
 综上：
 
 $$
+\begin{split}
 \dfrac{\partial}{\partial \Theta_{i,j}^{(L)}}J(\Theta)
-= \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \dfrac{\partial z_i^{(L)}}{\partial \Theta_{i,j}^{(L)}}
-= \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) a_j^{(L-1)} = (a_i^{(L)} - y_i)a_j^{(L-1)}
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \dfrac{\partial z_i^{(L)}}{\partial \Theta_{i,j}^{(L)}} \newline
+=& \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) a_j^{(L-1)} \newline
+=& (a_i^{(L)} - y_i)a_j^{(L-1)}
+\end{split}
 $$
 
 #### 情况2 隐层/输入层$$\rightarrow$$隐层
@@ -139,8 +142,8 @@ $$
 第一部分偏导是不好求解的，或者说是没法直接求解的，我们可以得到一个递推式：
 
 $$
-\dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} = 
-\sum_{k=1}^{s_{l+1}} \dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \dfrac{\partial z_k^{(l+1)}}{\partial a_i^{(l)}}
+\dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} 
+= \sum_{k=1}^{s_{l+1}} \Bigg[\dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \dfrac{\partial z_k^{(l+1)}}{\partial a_i^{(l)}}\Bigg] 
 $$
 
  > 因为该层的激活值与下一层各节点都有关，链式法则求导时需一一求导，所以有上式中的求和。
@@ -154,3 +157,99 @@ $$
 $$
 \dfrac{\partial z_k^{(l+1)}}{\partial a_i^{(l)}} = \dfrac{\partial ( \sum_{j=0}^{s_l} \Theta_{k,j}^{(l+1)} a_j^{(l)})}{\partial a_i^{(l)}} = \Theta_{k,i}^{(l+1)}
 $$
+
+所以，递推式为：
+
+$$
+\begin{split}
+\dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} 
+=& \sum_{k=1}^{s_{l+1}} \Bigg[\dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \dfrac{\partial z_k^{(l+1)}}{\partial a_i^{(l)}}\Bigg] \newline
+=& \sum_{k=1}^{s_{l+1}} \Bigg[ \dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \Theta_{k,i}^{(l+1)} \Bigg] \newline
+=& \sum_{k=1}^{s_{l+1}} \Bigg[ \dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} a_k^{(l+1)} (1 - a_k^{(l+1)}) \Theta_{k,i}^{(l+1)} \Bigg]
+\end{split}
+$$
+
+为了简化表达式，定义第$$l$$层第$$i$$个节点的误差：
+
+$$
+\begin{split}
+\delta^{(l)}_i 
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} \dfrac{\partial a_i^{(l)}}{\partial z_i^{(l)}} \newline
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} a_i^{(l)} (1 - a_i^{(l)})  \newline
+=& \sum_{k=1}^{s_{l+1}} \Bigg[ \dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \Theta_{k,i}^{(l+1)} \Bigg] a_i^{(l)} (1 - a_i^{(l)}) \newline
+=& \sum_{k=1}^{s_{l+1}} \Big[\delta^{(l+1)}_k \Theta_{k,i}^{(l+1)} \Big] a_i^{(l)} (1 - a_i^{(l)})
+\end{split}
+$$
+
+可知，**情况1**的误差为：
+
+$$
+\begin{split}
+\delta^{(L)}_i 
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \newline
+=& \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) \newline
+=& a_i^{(L)} - y_i
+\end{split}
+$$
+
+则最终的代价函数的偏导为：
+
+$$
+\begin{split}
+\dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta) 
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} \dfrac{\partial a_i^{(l)}}{\partial z_i^{(l)}} \dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}} \newline
+=& \delta^{(l)}_i \dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}} \newline
+=& \delta^{(l)}_i a_j^{(l-1)} 
+\end{split}
+$$
+
+我们发现，引入误差$$\delta^{(l)}_i$$后，这个公式可以通用于**情况1**和**情况2**。
+
+可以看出，当前层的代价函数偏导，需要依赖于后一层的计算结果。这也是为什么这个算法的名称叫做“反向传播算法”。
+
+#### 总结算法公式
+
+1. 输出层误差
+
+$$
+\begin{split}
+\delta^{(L)}_i 
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \newline
+=& \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) \newline
+=& a_i^{(L)} - y_i
+\end{split}
+$$
+
+2. 隐层误差（反向传播计算）
+
+$$
+\begin{split}
+\delta^{(L)}_i 
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \newline
+=& \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) \newline
+=& a_i^{(L)} - y_i
+\end{split}
+$$
+
+3. 代价函数偏导计算（通用）
+
+$$
+\begin{split}
+\dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta) 
+=& \dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} \dfrac{\partial a_i^{(l)}}{\partial z_i^{(l)}} \dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}} \newline
+=& \delta^{(l)}_i \dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}} \newline
+=& \delta^{(l)}_i a_j^{(l-1)} 
+\end{split}
+$$
+
+### 算法过程
+
+有了上述推导，我们描述一下算法具体的操作流程：
+
+1. 输入：输入样本数据，初始化权值参数（建议随机生成较小的数）。
+2. 前馈：计算各层（$$l=2, 3, ..., L$$）各节点的计算值（$$z^{(l)}=\Theta^{(l-1)}a^{(l-1)}$$）和激活值（a^{(l)}=g(z^{(l)})）。
+3. 输出层误差：计算$$\delta^{(L)}$$（公式见前文）。
+4. 反向传播误差：计算各层（$$l=L-1, L-2, ..., 2$$）的误差（公式见前文）。
+5. 输出：得到代价函数的梯度（参考前文偏导计算公式）。
+
+反向传播算法帮助我们得到了代价函数的梯度，我们就可以借助梯度下降法训练神经网络了。
