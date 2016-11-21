@@ -91,6 +91,29 @@ $$
 
 $$
 \dfrac{\partial}{\partial \Theta_{i,j}^{(L)}}J(\Theta)
-= \dfrac{\partial J(\Theta)}{\partial h_{\Theta}(x)_i} \dfrac{\partial h_{\Theta}(x)_i}{\partial g(z_i^{(L)})} \dfrac{\partial g(z_i^{(L)})}{\partial  \Theta_{i,j}^{(L)}}
-= \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial g(z_i^{(L)})} \dfrac{\partial g(z_i^{(L)})}{\partial  \Theta_{i,j}^{(L)}}
+= \dfrac{\partial J(\Theta)}{\partial h_{\Theta}(x)_i} \dfrac{\partial h_{\Theta}(x)_i}{\partial z_i^{(L)}} \dfrac{\partial z_i^{(L)}}{\partial  \Theta_{i,j}^{(L)}}
+= \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \dfrac{\partial z_i^{(L)}}{\partial \Theta_{i,j}^{(L)}}
 $$
+
+其中：
+
+$$
+\dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} = \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}}
+$$
+
+$$
+\dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} = \dfrac{\partial g(z_i^{(L)})}{\partial z_i^{(L)}} = \dfrac{e^{z_i^{(L)}}}{(e^{z_i^{(L)}}+1)^2} = a_i^{(L)} (1 - a_i^{(L)})
+$$
+
+$$
+\dfrac{\partial z_i^{(L)})}{\partial \Theta_{i,j}^{(L)}} = \dfrac{\partial ( \Sigma_{k=0}^{K} \Theta_{i,k}^{(L)} a_k^{(L-1)})}{\partial  \Theta_{i,j}^{(L)}} = a_j^{(L-1)} 
+$$
+
+综上：
+
+$$
+\dfrac{\partial}{\partial \Theta_{i,j}^{(L)}}J(\Theta)
+= \dfrac{\partial J(\Theta)}{\partial a_i^{(L)}} \dfrac{\partial a_i^{(L)}}{\partial z_i^{(L)}} \dfrac{\partial z_i^{(L)}}{\partial \Theta_{i,j}^{(L)}}
+= \dfrac{a_i^{(L)} - y_i}{(1 - a_i^{(L)})a_i^{(L)}} a_i^{(L)} (1 - a_i^{(L)}) a_j^{(L-1)} = (a_i^{(L)} - y_i)a_j^{(L-1)}
+$$
+
