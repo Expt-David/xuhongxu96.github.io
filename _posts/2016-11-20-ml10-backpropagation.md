@@ -136,7 +136,7 @@ $$
 $$
 
 $$
-\dfrac{\partial z_i^{(l)})}{\partial \Theta_{i,j}^{(l)}} = a_j^{(l-1)} 
+\dfrac{\partial z_i^{(l)}}{\partial \Theta_{i,j}^{(l)}} = a_j^{(l-1)} 
 $$
 
 第一部分偏导是不好求解的，或者说是没法直接求解的，我们可以得到一个递推式：
