@@ -12,6 +12,7 @@ categories:
   - Machine Learning
 twitter_text: 机器学习Coursera学习笔记：第十部分 神经网络反向传播算法
 title: 机器学习（十）神经网络反向传播算法
+image: '/assets/img/neural-networks/bp.png'
 ---
 ## 简述
 
