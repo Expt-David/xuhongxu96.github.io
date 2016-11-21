@@ -106,7 +106,7 @@ $$
 $$
 
 $$
-\dfrac{\partial z_i^{(L)})}{\partial \Theta_{i,j}^{(L)}} = \dfrac{\partial ( \sum_{k=0}^{K} \Theta_{i,k}^{(L)} a_k^{(L-1)})}{\partial  \Theta_{i,j}^{(L)}} = a_j^{(L-1)} 
+\dfrac{\partial z_i^{(L)}}{\partial \Theta_{i,j}^{(L)}} = \dfrac{\partial ( \sum_{k=0}^{s_{L-1}} \Theta_{i,k}^{(L)} a_k^{(L-1)})}{\partial  \Theta_{i,j}^{(L)}} = a_j^{(L-1)} 
 $$
 
 综上：
@@ -140,8 +140,10 @@ $$
 
 $$
 \dfrac{\partial J(\Theta)}{\partial a_i^{(l)}} = 
-\sum_{k=1}^{s_l} \dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \dfrac{\partial z_k^{(l+1)}}{\partial a_k^{(l)}}
+\sum_{k=1}^{s_{l+1}} \dfrac{\partial J(\Theta)}{\partial a_k^{(l+1)}} \dfrac{\partial a_k^{(l+1)}}{\partial z_k^{(l+1)}} \dfrac{\partial z_k^{(l+1)}}{\partial a_i^{(l)}}
 $$
+
+ > 因为该层的激活值与下一层各节点都有关，链式法则求导时需一一求导，所以有上式中的求和。
 
 递推式中第一部分是递推项，后两部分同样易求：
 
@@ -150,5 +152,5 @@ $$
 $$
 
 $$
-\dfrac{\partial z_k^{(l+1)}}{\partial a_k^{(l)}} = \dfrac{\partial ( \sum_{j=0}^{s_{l+1}} \Theta_{i,j}^{(l+1)} a_j^{(l)})}{\partial a_k^{(l)}} = \Theta_{i,k}^{(l+1)}
+\dfrac{\partial z_k^{(l+1)}}{\partial a_i^{(l)}} = \dfrac{\partial ( \sum_{j=0}^{s_l} \Theta_{k,j}^{(l+1)} a_j^{(l)})}{\partial a_i^{(l)}} = \Theta_{k,i}^{(l+1)}
 $$
