@@ -244,3 +244,5 @@ $$
 $$
 \Theta := \Theta - \eta \nabla J(\Theta)
 $$
+
+ > $$\eta$$为学习速率。
