@@ -88,6 +88,6 @@ $$
 
 $$
 \dfrac{\partial}{\partial \Theta_{i,j}^{(L)}}J(\Theta)
-= \dfrac{\partial J(\Theta)}{\partial h_{\Theta}(x)_i} \dfrac{\partial h_{\Theta}(x)_i}{\partial g(z_i^{(L)})} \dfrac{\partial g(z_i^{(L)}}{\partial  \Theta_{i,j}^{(L)}}
+= \dfrac{\partial J(\Theta)}{\partial h_{\Theta}(x)_i} \dfrac{\partial h_{\Theta}(x)_i}{\partial g(z_i^{(L)})} \dfrac{\partial g(z_i^{(L)})}{\partial  \Theta_{i,j}^{(L)}}
 = \dfrac{\partial J(\Theta)}{\partial h_{\Theta}(x)_i} \dfrac{\partial a_i}{\partial g(z_i^{(L)}} \dfrac{\partial g(z_i^{(L)})}{\partial  \Theta_{i,j}^{(L)}}
 $$
