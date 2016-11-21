@@ -23,14 +23,17 @@ title: 机器学习（十）神经网络反向传播算法
 
 $$
 \begin{align*}
-L =& 神经网络总层数（包括输入层、隐层和输出层） \newline
-s_l =& 第l层节点（神经元）个数，不包括偏移量节点。 \newline 
-K =& 输出节点个数 \newline
-h_{\theta}(x)_k =& 第k个预测输出结果 \newline
-x^{(i)} =& 第i个样本特征向量 \newline
-x^{(i)}_k =& 第i个样本的第k个特征值 \newline
-y^{(i)} =& 第i个样本实际结果向量 \newline
-y^{(i)}_k =& 第i个样本结果向量的第k个分量 \newline
+z_i^{(j)} =& \text{第$j$层的第$i$个节点（神经元）的“计算值”} \newline
+a_i^{(j)} =& \text{第$j$层的第$i$个节点（神经元）的“激活值”} \newline
+\Theta^{(l)}_{i,j} =& \text{映射第$l$层到第$l+1$层的权值矩阵的第$i$行第$j$列的分量} \newline
+L =& \text{神经网络总层数（包括输入层、隐层和输出层）} \newline
+s_l =& \text{第$l$层节点（神经元）个数，不包括偏移量节点。} \newline 
+K =& \text{输出节点个数} \newline
+h_{\theta}(x)_k =& \text{第$k$个预测输出结果} \newline
+x^{(i)} =& \text{第$i$个样本特征向量} \newline
+x^{(i)}_k =& \text{第$i$个样本的第$k$个特征值} \newline
+y^{(i)} =& \text{第$i$个样本实际结果向量} \newline
+y^{(i)}_k =& \text{第$i$个样本结果向量的第$k$个分量} \newline
 \end{align*}
 $$
 
@@ -68,7 +71,7 @@ $$
 \dfrac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta)
 $$
 
-这个偏导并不好求，我们假设只有一个样本（$$m=1$$，可忽略代价函数中的外部求和），并分为两种情况来求。
+这个偏导并不好求，为了方便推导，我们假设只有一个样本（$$m=1$$，可忽略代价函数中的外部求和），并舍弃正规化部分，然后分为两种情况来求。
 
 #### 隐层$$\rightarrow$$输出层
 
