@@ -75,7 +75,7 @@ $$
 我们知道：
 
 $$
-h_\Theta(x) = a^{(j+1)} = g(z^{(j+1)}) \newline
+h_{\Theta(x)} = a^{(j+1)} = g(z^{(j+1)}) \newline
 z^{(j)} = \Theta^{(j-1)}a^{(j-1)}
 $$
 
