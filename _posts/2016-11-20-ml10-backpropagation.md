@@ -242,5 +242,5 @@ $$
 反向传播算法帮助我们得到了代价函数的梯度，我们就可以借助梯度下降法训练神经网络了。
 
 $$
-\Theta := \Theta + \nabla J(\Theta)
+\Theta := \Theta - \eta \nabla J(\Theta)
 $$
