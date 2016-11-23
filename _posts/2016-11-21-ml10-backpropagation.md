@@ -282,7 +282,8 @@ a3 = sigmoid(z3);
 
 ``` matlab
 J = 1 / m * sum((-log(a3) .* Y - log(1 .- a3) .* (1 - Y))(:)) + ... # 代价部分
- lambda / 2 / m * (sum((Theta1(:, 2:end) .^ 2)(:)) + sum((Theta2(:, 2:end) .^ 2)(:))); # 正规化部分，lambda为正规参数，需除去偏移参数Theta*(:,1)
+ lambda / 2 / m * (sum((Theta1(:, 2:end) .^ 2)(:)) + sum((Theta2(:, 2:end) .^ 2)(:))); 
+ # 正规化部分，lambda为正规参数，需除去偏移参数Theta*(:,1)
 ```
 
 #### 反向传播
