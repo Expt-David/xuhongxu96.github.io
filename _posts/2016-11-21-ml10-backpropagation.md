@@ -247,3 +247,69 @@ $$
 $$
 
  > $$\eta$$为学习速率。
+ 
+### Octave/MATLAB代码
+
+以3层神经网络（输入层、隐层、输出层各一）为例。
+
+ - X为大小为$$样本数 * 特征数$$的样本特征矩阵
+ - Y为大小为$$样本数 * 输出节点数$$的样本类别（结果）矩阵
+ - Theta1为$$输入层\rightarrow隐层$$的权值矩阵
+ - Theta2为$$隐层\rightarrow输出层$$的权值矩阵
+ - m为样本数
+ - K为输出层节点数
+ - H为隐层节点数
+ - sigmoid函数即逻辑函数（S型函数，Sigmoid函数）
+ - sigmoidGradient函数即Sigmoid函数的导函数
+ 
+代码实现中，考虑了正规化，避免出现过拟合问题。
+ 
+#### 前馈阶段
+
+逐层计算各节点值和激活值。
+
+``` matlab
+a1 = X;
+z2 = [ones(m, 1), a1] * Theta1';
+a2 = sigmoid(z2);
+z3 = [ones(m, 1), a2] * Theta2';
+a3 = sigmoid(z3);
+```
+
+#### 代价函数
+
+正规化部分需注意代价函数不惩罚偏移参数，即$$\Theta_{i,0}$$（代码表示为`Theta(:,1)`）。
+
+``` matlab
+J = 1 / m * sum((-log(a3) .* Y - log(1 .- a3) .* (1 - Y))(:)) + ... # 代价部分
+ lambda / 2 / m * (sum((Theta1(:, 2:end) .^ 2)(:)) + sum((Theta2(:, 2:end) .^ 2)(:))); # 正规化部分，lambda为正规参数，需除去偏移参数Theta*(:,1)
+```
+
+#### 反向传播
+
+输出层误差和$$\Theta^{(2)}$$梯度计算，反向传播计算隐层误差和$$\Theta^{(1)}$$梯度。
+
+仍需注意正规化时排除偏移参数，另外注意为激活值补一个偏移量$$1$$。
+
+```matlab
+
+function g = sigmoid(z)
+    g = 1.0 ./ (1.0 + exp(-z));
+end
+
+function g = sigmoidGradient(z)
+    g = sigmoid(z) .* (1 - sigmoid(z));
+end
+
+delta3 = a3 - Y;
+
+Theta2_grad = 1 / m * delta3' * [ones(m, 1), a2] + ...
+  lambda / m * [zeros(K, 1), Theta2(:, 2:end)]; # 正规化部分
+
+delta2 = (delta3 * Theta2 .* sigmoidGradient([ones(m, 1), z2]));
+delta2 = delta2(:, 2:end); # 反向计算多一个偏移参数误差，除去
+
+Theta1_grad = 1 / m *  delta2' * [ones(m, 1), a1] + ...
+  lambda / m * [zeros(H, 1), Theta1(:, 2:end)]; # 正规化部分
+```
+
