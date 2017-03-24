@@ -9,7 +9,6 @@ description: '唤醒记忆，是一件有趣的事情。'
 categories:
 - story
 twitter_text: '唤醒记忆，是一件有趣的事情。'
-published: false
 ---
 
 
